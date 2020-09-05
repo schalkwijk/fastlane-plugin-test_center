@@ -272,6 +272,7 @@ module TestCenter
             }
           )
           @options[:only_testing] = (@options[:only_testing] || []) - Fastlane::Actions::TestsFromJunitAction.run(config).fetch(:passing, Hash.new).map(&:shellsafe_testidentifier)
+          @options[:skip_testing] = Fastlane::Actions::TestsFromJunitAction.run(config).fetch(:passing, Hash.new).map(&:shellsafe_testidentifier)
           if @options[:invocation_based_tests]
             @options[:only_testing] = @options[:only_testing].map(&:strip_testcase).uniq
           end

@@ -39,7 +39,6 @@ module TestCenter
 
           prepare_scan_config
           scan_options[:build_for_testing] = false
-          scan_options.delete(:skip_testing)
           FastlaneCore::UI.verbose("retrying_scan #update_scan_options")
           scan_options.each do |k,v|
             next if v.nil?
